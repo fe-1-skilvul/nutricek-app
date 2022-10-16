@@ -5,4 +5,4 @@ const buttonJoin = document.getElementById('btn-join');
 const buttonLogin = document.getElementById('btn-login');
 const form = document.querySelector('form');
 
-export { name, email, password, buttonJoin, form };
+export { name, email, password, buttonJoin, form, buttonLogin };
