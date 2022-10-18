@@ -11,6 +11,9 @@ const getActiveUser = () => {
   return JSON.parse(localStorage.getItem('activeUser'));
 };
 
+const getPopularFoodsAPI = () => {
+  const result = 0;
+};
 export {
   putToLocalStorage,
   getFromLocalStorage,

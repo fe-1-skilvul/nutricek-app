@@ -1,5 +1,5 @@
 import { email, password, buttonLogin } from './dom.js';
-import { getFromLocalStorage } from './service.js';
+import { getFromLocalStorage, putActiveUser } from './service.js';
 
 //Login
 const handleLogin = () => {
@@ -15,6 +15,7 @@ const handleLogin = () => {
     user.email === userdata.email &&
     user.password === userdata.password
   ) {
+    putActiveUser(userdata);
     return console.log('Login Success');
   }
   return console.log('login gagal');
