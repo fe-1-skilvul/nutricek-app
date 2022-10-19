@@ -1,5 +1,14 @@
 import { handleAuthUser } from './auth.js';
-import { getPopularFoodsAPI } from './service.js';
+import {
+  getPopularFoodsAPI,
+  getListFoodsAPI,
+  getFoodDetailByID,
+  getFoodBySearch,
+  getFoodInformation,
+} from './service.js';
 
 handleAuthUser();
-getPopularFoodsAPI();
+getListFoodsAPI();
+getFoodDetailByID();
+getFoodBySearch();
+getFoodInformation();
