@@ -25,17 +25,17 @@ const getPopularFoodsAPI = async () => {
   console.log(data);
 };
 const getListFoodsAPI = async () => {
-  const NUMBER = '30';
+  const NUMBER = '10';
   const url = `${BASE_URL}/complexSearch?apiKey=${API_KEY}&number=${NUMBER}`;
 
   const data = await fetch(url)
     .then((res) => res.json())
     .then((res) => {
-      return res;
+      return res.results;
     })
     .catch((err) => console.log(err));
 
-  console.log('list foods =>', data);
+  return data;
 };
 const getFoodInformation = async (id = '716381') => {
   const url = `${BASE_URL}/${id}/information?apiKey=${API_KEY}&${INC_NUTRITION}`;
