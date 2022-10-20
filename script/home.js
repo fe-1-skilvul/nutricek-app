@@ -1,5 +1,5 @@
 import { getListFoodsAPI } from './service.js';
-import { container } from './dom.js';
+import { container, foodId } from './dom.js';
 
 const getListFoods = async () => {
   console.log('loading');
@@ -15,9 +15,12 @@ const mapListFoods = (foods = []) => {
     return writeListFoodsComponent(id, image, title);
   });
 };
+
 const writeListFoodsComponent = (id, image, title) => {
   console.log(title);
-
+  function tes() {
+    console.log('tes');
+  }
   container.innerHTML += `<div class="col d-flex justify-content-center">
                                 <div class="card" style="width: 18rem;">
                                 <img src=${image} class="card-img-top" alt="...">
@@ -27,9 +30,12 @@ const writeListFoodsComponent = (id, image, title) => {
                                     <p class="card-text me-3">22 kkal</p>
                                     <p class="card-text">0.2kg/CO²</p>
                                     </div>
-                                <a href="./detail.html" class="btn btn-primary">detail</a>
+                                <a href="./detail.html?${id}" type="button" id=${id} onclick="tes(${id})" class="btn btn-primary">detail</a>
                                 </div>
                                 </div>
                             </div>`;
 };
-// getListFoods();
+getListFoods();
+foodId.addEventListener('click', () => {
+  console.log('this', foodId.name);
+});
