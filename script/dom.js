@@ -5,6 +5,8 @@ const buttonJoin = document.getElementById('btn-join');
 const buttonLogin = document.getElementById('btn-login');
 const form = document.querySelector('form');
 const container = document.querySelector('#container');
+const foodId = document.getElementById('100087');
+const buttonSave = document.getElementById('btn-save');
 
 export {
   name,
@@ -14,4 +16,6 @@ export {
   form,
   buttonLogin,
   container,
+  foodId,
+  buttonSave,
 };
