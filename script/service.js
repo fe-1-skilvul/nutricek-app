@@ -24,9 +24,9 @@ const getPopularFoodsAPI = async () => {
     .catch((err) => console.log(err));
   console.log(data);
 };
-const getListFoodsAPI = async () => {
-  const NUMBER = '10';
-  const url = `${BASE_URL}/complexSearch?apiKey=${API_KEY}&number=${NUMBER}`;
+const getListFoodsAPI = async (number = 10) => {
+  // const NUMBER = '10';
+  const url = `${BASE_URL}/complexSearch?apiKey=${API_KEY}&number=${number}`;
 
   const data = await fetch(url)
     .then((res) => res.json())
@@ -45,7 +45,7 @@ const getFoodInformation = async (id = '716381') => {
       return res;
     })
     .catch((err) => console.log(err));
-  console.log('infor food =>', data);
+  return data;
 };
 const getFoodDetailByID = async (id = '716381') => {
   const url = `${BASE_URL}/${id}/nutritionWidget.json?apiKey=${API_KEY}`;
@@ -55,7 +55,7 @@ const getFoodDetailByID = async (id = '716381') => {
       return res;
     })
     .catch((err) => console.log(err));
-  console.log('byid =>', data);
+  return data;
 };
 const getFoodBySearch = async (query = 'nasi') => {
   const url = `${BASE_URL}/complexSearch?apiKey=${API_KEY}&query${query}`;
