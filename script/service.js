@@ -10,6 +10,12 @@ const putActiveUser = (data) => {
 const getActiveUser = () => {
   return JSON.parse(localStorage.getItem('activeUser'));
 };
+const setFavoriteFoods = (id, list) => {
+  localStorage.setItem('favorite', list);
+};
+const getUserFavorite = (id) => {
+  return JSON.parse(localStorage.getItem('favorite'));
+};
 
 const BASE_URL = 'https://api.spoonacular.com/recipes';
 const API_KEY = '4da635c6a35347ce8cce85199806fd80';
@@ -78,6 +84,8 @@ export {
   getFoodDetailByID,
   getFoodBySearch,
   getFoodInformation,
+  setFavoriteFoods,
+  getUserFavorite,
 };
 
 // trivia foods https://api.spoonacular.com/recipes/716429/information?apiKey=4da635c6a35347ce8cce85199806fd80&includeNutrition=true.

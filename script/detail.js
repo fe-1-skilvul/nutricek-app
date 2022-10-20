@@ -1,10 +1,13 @@
-import { container } from './dom.js';
+import { container, buttonSave } from './dom.js';
 import {
   getFoodDetailByID,
   getFoodInformation,
   getListFoodsAPI,
+  setFavoriteFoods,
+  getUserFavorite,
 } from './service.js';
 
+const recentFoods = getUserFavorite();
 const sideBarComponent = async () => {
   const sidebar = document.getElementById('sidebar');
   const foods = await getListFoodsAPI(5);
@@ -50,4 +53,12 @@ const writeDetailToHtml = (image, namefood, description) => {
   descripe.innerHTML = `${description}`;
 };
 
-getAnchor();
+// getAnchor();
+const handleSaveFavorite = () => {
+  console.log(recentFoods);
+};
+
+buttonSave.addEventListener('click', () => {
+  handleSaveFavorite();
+});
+setFavoriteFoods('favorit', '[{object1},{object2}]');
