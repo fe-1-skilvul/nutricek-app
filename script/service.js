@@ -11,10 +11,11 @@ const getActiveUser = () => {
   return JSON.parse(localStorage.getItem('activeUser'));
 };
 const setFavoriteFoods = (id, list) => {
-  localStorage.setItem('favorite', list);
+  localStorage.setItem('favorite', JSON.stringify(list));
+  alert('added food success');
 };
 const getUserFavorite = (id) => {
-  return JSON.parse(localStorage.getItem('favorite'));
+  return localStorage.getItem('favorite');
 };
 
 const BASE_URL = 'https://api.spoonacular.com/recipes';
