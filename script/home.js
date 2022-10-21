@@ -32,6 +32,3 @@ const writeListFoodsComponent = (id, image, title) => {
                             </div>`;
 };
 getListFoods();
-foodId.addEventListener('click', () => {
-  console.log('this', foodId.name);
-});

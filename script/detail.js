@@ -6,29 +6,30 @@ import {
   setFavoriteFoods,
   getUserFavorite,
 } from './service.js';
-
+const sidebar = document.getElementById('sidebar');
+let foodActive = {};
+//SideBar
 const sideBarComponent = async () => {
-  const sidebar = document.getElementById('sidebar');
   const foods = await getListFoodsAPI(5);
+  writeSideBarItem(foods);
+};
 
+const writeSideBarItem = (foods) => {
   foods.map((food, i) => {
-    const { name, image, id } = food;
+    const { title, image, id } = food;
 
-    sidebar.innerHTML += `<div class="card mb-3" style="max-width: 540px;">
-                                    <div class="row g-0">
-                                    <div class="col-md-7">
-                                        <img src="..." class='${image}' alt="...">
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="card-body">
-                                        <a href="./detail.html?${id}">
-                                        <h5 class="card-title">${name}</h5></a>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>`;
+    sidebar.innerHTML += ` <div class="card mb-3  row g-0 d-flex flex-row w-100 " style="max-width: 400px;">
+                              <div class=" w-100">
+                                  <img src=${image} class="img-fluid rounded" alt="...">
+                              </div>
+                              <div class="w-100 h-50 mt-3 mb-3 text-center">
+                                  <a href="./detail.html?${id}" class="text-decoration-none">
+                                  <h5 class="card-title text-decoration-none text-dark">${title}</h5></a>
+                              </div>
+                          </div>`;
   });
 };
+// Get FOOD ACTIVE
 async function getAnchorQuery() {
   var currentUrl = document.URL,
     urlParts = currentUrl.split('?');
@@ -36,13 +37,15 @@ async function getAnchorQuery() {
   if (urlParts.length === 1) {
     return console.log('error 404');
   }
-  const nutrition = await getFoodDetailByID(id);
+
   const food = await getFoodInformation(id);
 
   if (food.nutrition != null) {
     writeNutritionToHtml(food.nutrition);
   }
   writeDetailToHtml(food.image, food.title, food.summary);
+
+  return (foodActive = food);
 }
 
 const writeDetailToHtml = (image, namefood, description) => {
@@ -62,30 +65,23 @@ const writeNutritionToHtml = (nutritions) => {
 };
 const recentFoods = JSON.parse(getUserFavorite());
 getAnchorQuery();
+
+//SAVE FOODS
 const handleSaveFavorite = () => {
+  let newarray = [];
   if (recentFoods != null) {
-    console.log(recentFoods);
-    const newdata = {
-      nama: 'soto betawi',
-      asal: 'jawa',
-    };
-    recentFoods.push(newdata);
-    // let recentData = recentFoods.push(newdata);
-    // return setFavoriteFoods(recentData);
+    recentFoods.push(foodActive);
+
+    return localStorage.setItem(
+      'favorite',
+      JSON.stringify(recentFoods)
+    );
   }
-  const data = [
-    {
-      nama: 'soto betawi',
-      asal: 'jawa',
-    },
-    {
-      nama: 'soto lamongan',
-      asal: 'lamongan',
-    },
-  ];
-  return localStorage.setItem('favorite', JSON.stringify(data));
+  newarray.push(foodActive);
+  return localStorage.setItem('favorite', JSON.stringify(newarray));
 };
 
 buttonSave.addEventListener('click', () => {
   handleSaveFavorite();
 });
+sideBarComponent();
