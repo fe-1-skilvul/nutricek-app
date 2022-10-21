@@ -1,12 +1,23 @@
 import { getActiveUser } from './service.js';
-const handleAuthUser = () => {
-  const isLogin = getActiveUser();
-
+const handleAuthUser = async () => {
+  const isLogin = await getActiveUser();
+  // writeUserName(isLogin.name);
   if (isLogin === null) {
-    return console.log('user belum login');
+    return window.location.replace('/login.html');
   }
 
-  return console.log('login success', isLogin);
+  setTimeout(() => {
+    writeUserName(isLogin.name);
+  }, [1000]);
 };
 
-export { handleAuthUser };
+const handleLogOut = () => {
+  localStorage.removeItem('activeUser');
+};
+
+const writeUserName = (name = 'Anon') => {
+  const divname = document.getElementById('username');
+
+  divname.innerHTML = `<p class="h5 ms-2 me-lg-5">${name}</p>`;
+};
+export { handleAuthUser, handleLogOut };

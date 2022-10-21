@@ -1,4 +1,5 @@
 import { container, buttonSave } from './dom.js';
+import { handleAuthUser } from './auth.js';
 import {
   getFoodDetailByID,
   getFoodInformation,
@@ -6,6 +7,8 @@ import {
   setFavoriteFoods,
   getUserFavorite,
 } from './service.js';
+
+handleAuthUser();
 const sidebar = document.getElementById('sidebar');
 let foodActive = {};
 //SideBar

@@ -1,5 +1,14 @@
 import { getListFoodsAPI } from './service.js';
-import { container, foodId } from './dom.js';
+import { handleAuthUser, handleLogOut } from './auth.js';
+import { container, logout } from './dom.js';
+
+handleAuthUser();
+setTimeout(() => {
+  const logout = document.getElementById('logout');
+  logout.addEventListener('click', () => {
+    handleLogOut();
+  });
+}, [1000]);
 
 const getListFoods = async () => {
   console.log('loading');

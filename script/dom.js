@@ -7,6 +7,7 @@ const form = document.querySelector('form');
 const container = document.querySelector('#container');
 const foodId = document.getElementById('100087');
 const buttonSave = document.getElementById('btn-save');
+const logout = document.getElementById('logout');
 
 export {
   name,
@@ -18,4 +19,5 @@ export {
   container,
   foodId,
   buttonSave,
+  logout,
 };
