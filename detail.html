@@ -2,11 +2,12 @@
 <html lang="en">
   <head>
     <include src="./component/head.html"></include>
-    <link rel="stylesheet" href="./style/detail.css" />
+    <link rel="stylesheet" href="./style/global.css">
+    <link rel="stylesheet" href="./style/detail.css">
   </head>
   <body>
     <include src="./component/navbar.html"></include>
-    <section class="container-">
+    <section class="container">
       <div class="mx-5">
         <div class="my-2">
           <a href="./home.html">
@@ -17,32 +18,26 @@
           </a>
         </div>  
         <div class="row mb-5" id="container">
-          <div class="col-8 mx-3 ">
+          <div class="col-8 mx-3 w-100">
             <div class="d-flex justify-content-center" id="imgfood">
-              
-
             </div>
-            <div class="d-flex mt-3 flex-column">
+            <div class="d-flex mt-5 pb-3 flex-column flex-md-row justify-content-around ">
               <div>
-
                 <h1  id="foodName"></h1>
               </div>
+              <a href="/signup.html" class="text-decoration-none" id="btn-save">
+                <button type="button" class="m-2 button button-main text-decoration-none">Simpan</button>
+                </a>
             </div>
-            <div class="d-flex justify-content-end">
-              <button class="btn btn-lg btn-primary w-25" id="btn-save"> Simpan </button>
-            </div>
+            
             <div>
-              <div>
-                <h6>Nutritions:</h6>
-
-                <ul>
-                  <li>Lemak 12,34g</li>
-                  <li>Karbohidrat 41,7g</li>
-                  <li>Protein 12,47g</li>
+              <div class="col-12 nutribox d-flex justify-content-center">
+                <h5 class="align-self-start">Nutritions:</h5>
+                <ul id="nutribox" class="col-12 d-flex flex-row flex-wrap">
                 </ul>
               </div>
               <div>
-                <h6>Deskripsi:</h6>
+                <h5>Deskripsi:</h5>
                 <div id="foodDesc">
                 </div>
               </div>

@@ -21,15 +21,11 @@ const writeListFoodsComponent = (id, image, title) => {
   function tes() {
     console.log('tes');
   }
-  container.innerHTML += `<div class="col d-flex justify-content-center">
+  container.innerHTML += `<div class="col d-flex justify-content-center mb-5">
                                 <div class="card" style="width: 18rem;">
                                 <img src=${image} class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">${title}</h5>
-                                    <div class="d-flex">
-                                    <p class="card-text me-3">22 kkal</p>
-                                    <p class="card-text">0.2kg/CO²</p>
-                                    </div>
                                 <a href="./detail.html?${id}" type="button" id=${id} onclick="tes(${id})" class="btn btn-primary">detail</a>
                                 </div>
                                 </div>

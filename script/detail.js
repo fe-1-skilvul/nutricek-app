@@ -7,7 +7,6 @@ import {
   getUserFavorite,
 } from './service.js';
 
-const recentFoods = getUserFavorite();
 const sideBarComponent = async () => {
   const sidebar = document.getElementById('sidebar');
   const foods = await getListFoodsAPI(5);
@@ -30,7 +29,7 @@ const sideBarComponent = async () => {
                                 </div>`;
   });
 };
-async function getAnchor() {
+async function getAnchorQuery() {
   var currentUrl = document.URL,
     urlParts = currentUrl.split('?');
   let id = urlParts[1];
@@ -40,7 +39,9 @@ async function getAnchor() {
   const nutrition = await getFoodDetailByID(id);
   const food = await getFoodInformation(id);
 
-  console.log(food);
+  if (food.nutrition != null) {
+    writeNutritionToHtml(food.nutrition);
+  }
   writeDetailToHtml(food.image, food.title, food.summary);
 }
 
@@ -52,13 +53,39 @@ const writeDetailToHtml = (image, namefood, description) => {
   name.innerText = `${namefood}`;
   descripe.innerHTML = `${description}`;
 };
-
-// getAnchor();
+const writeNutritionToHtml = (nutritions) => {
+  const { nutrients } = nutritions;
+  const nutribox = document.getElementById('nutribox');
+  nutrients.map((value, i) => {
+    nutribox.innerHTML += `<li class="ml-2 mt-2"><h6>${value.name} :</h6>  <h6 class="nutri-value">  ${value.amount}</h6></li>`;
+  });
+};
+const recentFoods = JSON.parse(getUserFavorite());
+getAnchorQuery();
 const handleSaveFavorite = () => {
-  console.log(recentFoods);
+  if (recentFoods != null) {
+    console.log(recentFoods);
+    const newdata = {
+      nama: 'soto betawi',
+      asal: 'jawa',
+    };
+    recentFoods.push(newdata);
+    // let recentData = recentFoods.push(newdata);
+    // return setFavoriteFoods(recentData);
+  }
+  const data = [
+    {
+      nama: 'soto betawi',
+      asal: 'jawa',
+    },
+    {
+      nama: 'soto lamongan',
+      asal: 'lamongan',
+    },
+  ];
+  return localStorage.setItem('favorite', JSON.stringify(data));
 };
 
 buttonSave.addEventListener('click', () => {
   handleSaveFavorite();
 });
-setFavoriteFoods('favorit', '[{object1},{object2}]');
