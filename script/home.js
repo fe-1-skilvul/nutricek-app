@@ -26,16 +26,14 @@ const mapListFoods = (foods = []) => {
 };
 
 const writeListFoodsComponent = (id, image, title) => {
-  console.log(title);
-  function tes() {
-    console.log('tes');
-  }
   container.innerHTML += `<div class="col d-flex justify-content-center mb-5">
                                 <div class="card" style="width: 18rem;">
                                 <img src=${image} class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">${title}</h5>
-                                <a href="./detail.html?${id}" type="button" id=${id} onclick="tes(${id})" class="btn btn-primary">detail</a>
+                                  <a href="./detail.html?${id}" type="button" id=${id} onclick="tes(${id})">
+                                    <button  class=" button button-main">detail </button>
+                                  </a>
                                 </div>
                                 </div>
                             </div>`;

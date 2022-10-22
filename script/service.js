@@ -14,7 +14,7 @@ const setFavoriteFoods = (id, list) => {
   localStorage.setItem('favorite', JSON.stringify(list));
   alert('added food success');
 };
-const getUserFavorite = (id) => {
+const getUserFavorite = () => {
   return localStorage.getItem('favorite');
 };
 
