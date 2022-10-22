@@ -32,7 +32,7 @@ const writeListFoodsComponent = (id, image, title) => {
                                 <div class="card-body">
                                     <h5 class="card-title">${title}</h5>
                                   <a href="./detail.html?${id}" type="button" id=${id} onclick="tes(${id})">
-                                    <button  class=" button button-main">detail </button>
+                                    <button  class=" button button-main">More</button>
                                   </a>
                                 </div>
                                 </div>
