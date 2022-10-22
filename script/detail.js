@@ -1,4 +1,5 @@
 import { container, buttonSave } from './dom.js';
+import { handleAuthUser, handleLogOut } from './auth.js';
 import {
   getFoodDetailByID,
   getFoodInformation,
@@ -6,6 +7,14 @@ import {
   setFavoriteFoods,
   getUserFavorite,
 } from './service.js';
+
+handleAuthUser();
+setTimeout(() => {
+  const logout = document.getElementById('logout');
+  logout.addEventListener('click', () => {
+    handleLogOut();
+  });
+}, [1000]);
 const sidebar = document.getElementById('sidebar');
 let foodActive = {};
 //SideBar

@@ -16,7 +16,7 @@ const handleLogin = () => {
     user.password === userdata.password
   ) {
     putActiveUser(userdata);
-    return console.log('Login Success');
+    return (window.location.href = '../login.html');
   }
   return console.log('login gagal');
 };

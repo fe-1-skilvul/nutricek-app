@@ -26,6 +26,8 @@ const handleRegister = () => {
   console.log(state);
   putToLocalStorage(state);
 
+  alert('welcome, go login');
+  window.location.href = '../login.html';
   form.reset();
 };
 
