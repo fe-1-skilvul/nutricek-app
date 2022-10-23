@@ -1,6 +1,6 @@
 import { getListFoodsAPI, getFoodBySearch } from './service.js';
 import { handleAuthUser, handleLogOut } from './auth.js';
-import { container, logout, buttonSearch, query } from './dom.js';
+import { container, buttonSearch, query } from './dom.js';
 
 handleAuthUser();
 setTimeout(() => {
@@ -11,8 +11,6 @@ setTimeout(() => {
 }, [1000]);
 
 const getListFoods = async () => {
-  console.log(query);
-  console.log(buttonSearch);
   const data = await getListFoodsAPI();
 
   mapListFoods(data);
@@ -37,7 +35,7 @@ const writeListFoodsComponent = (id, image, title) => {
                                 </div>
                             </div>`;
 };
-getListFoods();
+getListFoods(50);
 const handleSearch = async (value) => {
   const data = await getFoodBySearch(value);
   if (data.length === 0) {

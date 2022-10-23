@@ -80,13 +80,14 @@ const handleSaveFavorite = () => {
   let newarray = [];
   if (recentFoods != null) {
     recentFoods.push(foodActive);
-
+    alert('save food success');
     return localStorage.setItem(
       'favorite',
       JSON.stringify(recentFoods)
     );
   }
   newarray.push(foodActive);
+  alert('save food success');
   return localStorage.setItem('favorite', JSON.stringify(newarray));
 };
 
