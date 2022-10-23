@@ -31,7 +31,7 @@ const getPopularFoodsAPI = async () => {
     .catch((err) => console.log(err));
   console.log(data);
 };
-const getListFoodsAPI = async (number = 10) => {
+const getListFoodsAPI = async (number = 30) => {
   // const NUMBER = '10';
   const url = `${BASE_URL}/complexSearch?apiKey=${API_KEY}&number=${number}`;
 
