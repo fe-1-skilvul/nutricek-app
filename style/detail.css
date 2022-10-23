@@ -1,0 +1,23 @@
+#nutribox{
+    min-height: 400px;
+    max-height: 800px;
+    overflow: scroll;
+
+}
+#nutribox li{
+    width: 300px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#nutribox li .nutri-value{
+    color: #108590;
+    margin-left: 5px;
+}
+#container{
+    margin-top: 50px;
+}
+.nutribox{
+    margin-top: 100px;
+}
