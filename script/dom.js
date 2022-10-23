@@ -8,6 +8,8 @@ const container = document.querySelector('#container');
 const foodId = document.getElementById('100087');
 const buttonSave = document.getElementById('btn-save');
 const logout = document.getElementById('logout');
+const query = document.getElementById('search');
+const buttonSearch = document.getElementById('btn-search');
 
 export {
   name,
@@ -20,4 +22,6 @@ export {
   foodId,
   buttonSave,
   logout,
+  query,
+  buttonSearch,
 };

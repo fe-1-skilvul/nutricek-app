@@ -1,6 +1,6 @@
-import { getListFoodsAPI } from './service.js';
+import { getListFoodsAPI, getFoodBySearch } from './service.js';
 import { handleAuthUser, handleLogOut } from './auth.js';
-import { container, logout } from './dom.js';
+import { container, logout, buttonSearch, query } from './dom.js';
 
 handleAuthUser();
 setTimeout(() => {
@@ -11,10 +11,9 @@ setTimeout(() => {
 }, [1000]);
 
 const getListFoods = async () => {
-  console.log('loading');
-  const data = await getListFoodsAPI().finally(() =>
-    console.log('loading berhenti')
-  );
+  console.log(query);
+  console.log(buttonSearch);
+  const data = await getListFoodsAPI();
 
   mapListFoods(data);
 };
@@ -39,3 +38,17 @@ const writeListFoodsComponent = (id, image, title) => {
                             </div>`;
 };
 getListFoods();
+const handleSearch = async (value) => {
+  const data = await getFoodBySearch(value);
+  if (data.length === 0) {
+    container.innerHTML = `<div class="col d-flex flex-column justify-content-center mb-5 alert-null">
+                              <h4 class="mt-5 class="color-primary"">Food Not Found</h4>
+                          </div>`;
+  }
+  mapListFoods(data);
+};
+buttonSearch.addEventListener('click', () => {
+  const value = query.value;
+  container.innerHTML = ' ';
+  handleSearch(value);
+});

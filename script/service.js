@@ -64,16 +64,16 @@ const getFoodDetailByID = async (id = '716381') => {
     .catch((err) => console.log(err));
   return data;
 };
-const getFoodBySearch = async (query = 'nasi') => {
-  const url = `${BASE_URL}/complexSearch?apiKey=${API_KEY}&query${query}`;
+const getFoodBySearch = async (query) => {
+  const url = `${BASE_URL}/complexSearch?apiKey=${API_KEY}&query=${query}`;
   const data = await fetch(url)
     .then((res) => res.json())
     .then((res) => {
-      return res;
+      return res.results;
     })
     .catch((err) => console.log(err));
 
-  console.log('by search =>', data);
+  return data;
 };
 export {
   putToLocalStorage,
